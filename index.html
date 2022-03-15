@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>novel</title>
+</head>
+
+<body>
+    <div id="app">
+        
+
+        <div v-for="(c,index) in cap" >
+            <h2>{{c.titulo}}</h2>
+            <div v-for="p in c.paragrafos">
+                <p>{{p.p}}</p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                cap: ''
+            },
+            methods: {
+                getApi() {
+                    fetch('./novel.json').then(r => r.json()).then(r => {
+                        this.cap = r;
+                    })
+                },
+            },
+                        
+            created(){
+                this.getApi()
+            }
+        })
+    </script>
+</body>
+
+</html>
