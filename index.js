@@ -6,7 +6,7 @@ const colors = require("ansi-colors");
 (async () => {
   //const capitulos =[]
   const capitulos = require("./RTWRW.json");
-  const total = 1000;
+  const total = 100;
 
   const b1 = new cliProgress.SingleBar(
     {
@@ -24,7 +24,7 @@ const colors = require("ansi-colors");
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(
-    "https://www-novelcool-com.translate.goog/chapter/Rebirth-of-the-Thief-Chapter-165/525710/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=wapp"
+    "https://www-novelcool-com.translate.goog/chapter/Rebirth-of-the-Thief-Who-Roamed-the-World-Chapter-577-/2342922/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=wapp"
   );
 
   b1.start(total, 0, { titulo: "iniciando..." });
