@@ -4,8 +4,8 @@ const cliProgress = require("cli-progress");
 const colors = require("ansi-colors");
 
 (async () => {
-  //const capitulos =[]
-  const capitulos = require("./RTWRW.json");
+  const capitulos =[]
+  //const capitulos = require("./RTWRW.json");
   const total = 100;
 
   const b1 = new cliProgress.SingleBar(
@@ -21,10 +21,13 @@ const colors = require("ansi-colors");
     cliProgress.Presets.react
   );
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({headless:false});
   const page = await browser.newPage();
   await page.goto(
-    "https://www-novelcool-com.translate.goog/chapter/Rebirth-of-the-Thief-Who-Roamed-the-World-Chapter-577-/2342922/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=wapp"
+    "https://www.google.com.br/"
+  );
+  await page.goto(
+    "https://translate.google.com/translate?sl=pt&tl=en&hl=pt-BR&u=https://www.novelcool.com/chapter/I-m-the-King-Of-Technology-Chapter-498-Success-/5876474/&client=webapp"
   );
 
   b1.start(total, 0, { titulo: "iniciando..." });
@@ -66,7 +69,7 @@ const colors = require("ansi-colors");
     capitulos.push(capitulo);
 
     //console.log(capitulos)
-    fs.writeFile("RTWRW.json", JSON.stringify(capitulos, null, 2), (err) => {
+    fs.writeFile("tec.json", JSON.stringify(capitulos, null, 2), (err) => {
       if (err) throw new Error("erro");
     });
     await page.goto(capitulo.url);
